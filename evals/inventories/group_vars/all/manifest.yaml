@@ -8,33 +8,40 @@ threescale: true
 # not currently used but records the version installed by the operator, this should come from the status block
 # // tag::three-scale[]
 threescale_version: '2.4.0.GA'
+# // end::three-scale[]
 threescale_template: 'https://raw.githubusercontent.com/3scale/3scale-amp-openshift-templates/{{threescale_version}}/amp/amp.yml'
 threescale_template_s3: 'https://raw.githubusercontent.com/3scale/3scale-amp-openshift-templates/{{threescale_version}}/amp/amp-s3.yml'
-# // end::three-scale[]
 
 #controls whether che is installed or not
 #note che cannot be installed without launcher being present currently
+# // tag::codeready[]
 che: true
 che_version: '1.0.0.GA'
+# // end::codeready[]
+
 # by default the GA installer uses the :latest tag so we need to set the tagged version in the config
 che_server_image: 'registry.access.redhat.com/codeready-workspaces/server:1.0'
 che_operator_image: 'registry.access.redhat.com/codeready-workspaces/server-operator:1.0'
 che_installer: 'https://raw.githubusercontent.com/redhat-developer/codeready-workspaces-deprecated/{{che_version}}/operator-installer/deploy.sh'
 
 #controls whether enmasse is installed or not
+# // tag::amq-online[]
 enmasse: true
 enmasse_version: '1.0.0.GA'
+# // end::amq-online[]
 # This is used to indicate where to pull the artifact from for installing EnMasse.
 enmasse_download_url: https://access.redhat.com/node/3869211/423/0
 # Controls whether to use a productised version. Use with 'enmasse_productised_download_url'
 is_productised_version: true
 
 #controls whether fuse is installed or not
+# // tag::fuse-online[]
 fuse: true
 #This is the release tag for fuse on openshift in github currently used to pull in the templates and image streams
 fuse_release_tag: 'application-templates-2.1.fuse-720018-redhat-00001'
 #not currently used as the operator decides what to install
 fuse_version: '7.2'
+# // end::fuse-online[]
 
 #controls whether Fuse Online is installed or not
 fuse_online: true
@@ -45,6 +52,7 @@ fuse_online_imagestream_resources: 'https://raw.githubusercontent.com/syndesisio
 fuse_online_crd_resources: 'https://raw.githubusercontent.com/syndesisio/fuse-online-install/{{fuse_online_release_tag}}/resources/syndesis-crd.yml'
 
 #controls whether Launcher is installed or not.
+# // tag::launcher[]
 launcher: true
 # https://github.com/fabric8-launcher/launcher-openshift-templates/issues/46
 # we will need to set this during a release to the latest commit hash on master to ensure it doesn't change under us example: c1efdf1
@@ -52,6 +60,7 @@ launcher_backend_image_tag: 'b006e49'
 # we will need to set this during a release to the latest commit hash on master to ensure it doesn't change under us example: 0a941c1
 launcher_frontend_image_tag: 'a00064f'
 launcher_version: '7224e235226ffa42135f148bacc409e9f7f402e4'
+# // end::launcher[]
 launcher_template: 'https://raw.githubusercontent.com/fabric8-launcher/launcher-openshift-templates/{{launcher_version}}/openshift/launcher-template.yaml'
 launcher_sso_template: https://raw.githubusercontent.com/jboss-container-images/redhat-sso-7-openshift-image/v7.3.0.GA/templates/sso73-x509-postgresql-persistent.json
 
@@ -72,15 +81,19 @@ gitea_operator_release_tag: 'v0.0.3'
 gitea_operator_resources: 'https://raw.githubusercontent.com/integr8ly/gitea-operator/{{gitea_operator_release_tag}}/deploy/'
 
 #controls whether webapp is installed or not
+# // tag::webapp[]
 webapp: true
 #below vars are not currently used but reflect the current state. In the future they will be used when we source resources from outside of the installer
 webapp_version: '2.4.0'
 webapp_operator_release_tag: 'v0.0.4'
+# // end::webapp[]
 webapp_operator_resources: 'https://raw.githubusercontent.com/integr8ly/tutorial-web-app-operator/{{webapp_operator_release_tag}}/deploy/'
 
 #controls whether apicurito is installed or not
+# // tag::apicurito[]
 apicurito: true
 apicurito_version: '0.2.18.Final'
+# // end::apicurito[]
 
 #controls whether nexus is installed or not
 nexus: true
